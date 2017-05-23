@@ -50,7 +50,6 @@ env:
 
 before_install:
   - npm cache clean -f
-  - npm install -g n
   - node --version
   - npm install -g ios-deploy
 
