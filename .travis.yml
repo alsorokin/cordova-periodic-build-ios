@@ -1,0 +1,67 @@
+sudo: false
+os: osx
+language: node_js
+node_js: "4.2"
+osx_image: xcode 7.3
+
+env: 
+  # iOS 9.3
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-console
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-media-capture
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-camera
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-network-information
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device-motion
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-vibration
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-statusbar
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-globalization
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device-orientation
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-battery-status
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-contacts
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-media
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-geolocation
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-dialogs
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-inappbrowser
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-file
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-file-transfer
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-splashscreen
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-screen-orientation
+  # iOS 10.0
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-console
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-media-capture
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-camera
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-network-information
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device-motion
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-vibration
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-statusbar
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-globalization
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device-orientation
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-battery-status
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-contacts
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-media
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-geolocation
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-dialogs
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-inappbrowser
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-file
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-file-transfer
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-splashscreen
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-screen-orientation
+
+before_install:
+  - npm cache clean -f
+  - npm install -g n
+  - node --version
+  - npm install -g ios-deploy
+
+install:
+  - git clone --depth=1 --branch=master https://github.com/apache/cordova-paramedic /tmp/paramedic && pushd /tmp/paramedic && npm install && popd
+  - npm install -g cordova@nightly
+  - git clone --depth=1 --branch=master https://github.com/apache/$PLUGIN /tmp/$PLUGIN
+
+script:
+  - PLUGINS_ARG="--plugin /tmp/$PLUGIN"
+  - FTS_ARG="--fileTransferServer http://sheltered-retreat-43956.herokuapp.com"
+  # run general tests and Appium tests separately for easier result identification
+  - node /tmp/paramedic/main.js --config pr/$PLATFORM $PLUGINS_ARG $FTS_ARG --shouldUseSauce --buildName travis-periodic-$TRAVIS_JOB_NUMBER --skipAppium
+  - if [ PLUGIN = cordova-plugin-camera -o PLUGIN = cordova-plugin-contacts ]; then node /tmp/paramedic/main.js --config pr/$PLATFORM $PLUGINS_ARG $FTS_ARG --shouldUseSauce --buildName travis-periodic-$TRAVIS_JOB_NUMBER --skipMainTests; fi
