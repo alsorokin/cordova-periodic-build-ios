@@ -61,6 +61,4 @@ install:
 script:
   - PLUGINS_ARG="--plugin /tmp/$PLUGIN"
   - FTS_ARG="--fileTransferServer http://sheltered-retreat-43956.herokuapp.com"
-  # run general tests and Appium tests separately for easier result identification
-  - node /tmp/paramedic/main.js --config pr/$PLATFORM $PLUGINS_ARG $FTS_ARG --shouldUseSauce --buildName travis-periodic-$TRAVIS_JOB_NUMBER --skipAppium
-  - if [ $PLUGIN = cordova-plugin-camera -o $PLUGIN = cordova-plugin-contacts ]; then node /tmp/paramedic/main.js --config pr/$PLATFORM $PLUGINS_ARG $FTS_ARG --shouldUseSauce --buildName travis-periodic-$TRAVIS_JOB_NUMBER --skipMainTests; fi
+  - node /tmp/paramedic/main.js --config pr/$PLATFORM $PLUGINS_ARG $FTS_ARG --shouldUseSauce --buildName travis-periodic-$TRAVIS_JOB_NUMBER
