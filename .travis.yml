@@ -6,47 +6,49 @@ osx_image: xcode 7.3
 
 env: 
   # iOS 9.3
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-console
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-media-capture
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-camera
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-network-information
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device-motion
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-vibration
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-statusbar
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-globalization
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device-orientation
   - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-battery-status
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-camera
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-console
   - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-contacts
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-media
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-geolocation
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device-motion
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-device-orientation
   - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-dialogs
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-inappbrowser
   - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-file
   - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-file-transfer
-  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-splashscreen
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-geolocation
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-globalization
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-inappbrowser
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-media
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-media-capture
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-network-information
   - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-screen-orientation
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-splashscreen
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-statusbar
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-vibration
+  - PLATFORM=ios-9.3 PLUGIN=cordova-plugin-wkwebview-engine
   # iOS 10.0
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-console
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-media-capture
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-camera
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-network-information
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device-motion
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-vibration
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-statusbar
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-globalization
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device-orientation
   - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-battery-status
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-camera
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-console
   - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-contacts
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-media
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-geolocation
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device-motion
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-device-orientation
   - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-dialogs
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-inappbrowser
   - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-file
   - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-file-transfer
-  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-splashscreen
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-geolocation
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-globalization
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-inappbrowser
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-media
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-media-capture
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-network-information
   - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-screen-orientation
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-splashscreen
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-statusbar
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-vibration
+  - PLATFORM=ios-10.0 PLUGIN=cordova-plugin-wkwebview-engine
 
 before_install:
   - npm cache clean -f
