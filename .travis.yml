@@ -1,7 +1,7 @@
 sudo: false
 os: osx
 language: node_js
-node_js: "4.2"
+node_js: "6"
 osx_image: xcode 7.3
 
 env: 
@@ -56,17 +56,17 @@ before_install:
   - npm install -g ios-deploy
 
 install:
-  - git clone --depth=1 --branch=master https://github.com/apache/cordova-paramedic /tmp/paramedic && pushd /tmp/paramedic && npm install && popd
-  - git clone --depth=1 --branch=master https://github.com/apache/cordova-coho /tmp/coho && pushd /tmp/coho && npm install && popd
-  - git clone --depth=1 --branch=master https://github.com/apache/$PLUGIN /tmp/$PLUGIN
+  - git clone --depth=1 --branch=master https://github.com/apache/cordova-paramedic && pushd cordova-paramedic && npm install && popd
+  - git clone --depth=1 --branch=master https://github.com/apache/cordova-coho && pushd cordova-coho/src && npm install && popd
+  - git clone --depth=1 --branch=master https://github.com/apache/$PLUGIN
   # installing dev cordova
-  - pushd /tmp && coho/coho repo-clone -r tools && popd
-  - pushd /tmp && coho/coho npm-link && popd
-  - pushd /tmp/cordova-cli && npm install && popd
-  - /tmp/cordova-cli/bin/cordova -v
+  - cordova-coho/coho repo-clone -r tools
+  - cordova-coho/coho npm-link
+  - pushd cordova-cli && npm install && popd
+  - cordova-cli/bin/cordova -v
 
 script:
-  - PLUGINS_ARG="--plugin /tmp/$PLUGIN"
+  - PLUGINS_ARG="--plugin $PLUGIN"
   - FTS_ARG="--fileTransferServer http://sheltered-retreat-43956.herokuapp.com"
-  - CLI_ARG="--cli /tmp/cordova-cli/bin/cordova"
-  - node /tmp/paramedic/main.js --config pr/$PLATFORM $PLUGINS_ARG $FTS_ARG $CLI_ARG --shouldUseSauce --buildName travis-periodic-$TRAVIS_JOB_NUMBER
+  - CLI_ARG="--cli cordova-cli/bin/cordova"
+  - node cordova-paramedic/main.js --config pr/$PLATFORM $PLUGINS_ARG $FTS_ARG $CLI_ARG --shouldUseSauce --buildName travis-periodic-$TRAVIS_JOB_NUMBER
